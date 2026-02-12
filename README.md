@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Verifier Service
 
-## Getting Started
+API-only microservice for verifying claims against citations.
 
-First, run the development server:
+## Setup
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.local.example .env.local
+   ```
+
+2. Fill in your environment variables in `.env.local`:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   SERVICE_SECRET=your_secret_token_here
+   ```
+
+## Running the Service
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The service will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Endpoints
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### GET /api/health
 
-## Learn More
+Health check endpoint to verify the service is running.
 
-To learn more about Next.js, take a look at the following resources:
+**Request:**
+```bash
+curl http://localhost:3000/api/health
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Response:**
+```json
+{
+  "ok": true
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### POST /api/verify
 
-## Deploy on Vercel
+Verify a claim against a citation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Authentication:** Requires `Authorization: Bearer <SERVICE_SECRET>` header.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Request Body:**
+```json
+{
+  "claim": "The sky is blue",
+  "citation": "According to atmospheric science, Rayleigh scattering causes the sky to appear blue."
+}
+```
+
+**Example Request:**
+```bash
+curl -X POST http://localhost:3000/api/verify \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_secret_token_here" \
+  -d '{
+    "claim": "The sky is blue",
+    "citation": "According to atmospheric science, Rayleigh scattering causes the sky to appear blue."
+  }'
+```
+
+**Expected Response:**
+```json
+{
+  "verdict": "cannot_verify",
+  "confidence": "low",
+  "evidence": [],
+  "notes": "Stub. Agent not implemented yet.",
+  "claim": "The sky is blue",
+  "citation": "According to atmospheric science, Rayleigh scattering causes the sky to appear blue."
+}
+```
+
+**Error Responses:**
+
+401 Unauthorized (missing or invalid auth):
+```json
+{
+  "error": "Unauthorized"
+}
+```
+
+400 Bad Request (validation error):
+```json
+{
+  "error": "Validation failed",
+  "details": [
+    {
+      "code": "too_small",
+      "minimum": 1,
+      "type": "string",
+      "inclusive": true,
+      "exact": false,
+      "message": "Claim is required",
+      "path": ["claim"]
+    }
+  ]
+}
+```
+
+## Technology Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- Zod (validation)
+- Node.js runtime
