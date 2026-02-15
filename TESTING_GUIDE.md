@@ -137,9 +137,9 @@ Results saved to: tests/results.json
 
 ## Modified Files
 
-- ✅ `lib/verifier/schema.ts` - Added `VerificationResponseSchema` with `citationData`
+- ✅ `lib/verifier/schema.ts` - Added `OrchestratorResponseSchema` with `citationData`
 - ✅ `lib/verifier/orchestrator.ts` - Returns combined verification + citation data
-- ✅ `lib/verifier/index.ts` - Exports `VerificationResponse` type
+- ✅ `lib/verifier/index.ts` - Exports `OrchestratorResponse` type
 - ✅ `scripts/test-citations.ts` - Parses claim-citation pairs
 - ✅ `tests/citations.txt` - New format with pairs
 - ✅ API endpoint unchanged (automatically includes new data via spread)

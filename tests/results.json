@@ -1,10 +1,32 @@
 {
-  "timestamp": "2026-02-12T01:23:22.847Z",
-  "total": 3,
+  "timestamp": "2026-02-14T06:01:27.101Z",
+  "total": 2,
   "results": [
     {
-      "citation": "https://en.wikipedia.org/wiki/Earth",
-      "claim": "The Earth is the third planet from the Sun",
+      "citation": "Quinn T Ostrom, Mackenzie Price, Corey Neff, Gino Cioffi, Kristin A Waite, Carol Kruchko, Jill S Barnholtz-Sloan, CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States in 2015–2019, Neuro-Oncology, Volume 24, Issue Supplement_5, October 2022, Pages v1–v95, https://doi-org.dartmouth.idm.oclc.org/10.1093/neuonc/noac202",
+      "claim": "Primary brain and other central nervous system tumors represent a significant burden on public health, with an average annual age-adjusted incidence rate of 24.71 per 100,000 population in the United States.",
+      "response": {
+        "verdict": "cannot_verify",
+        "confidence": "low",
+        "evidence": [],
+        "notes": "Automated verification unavailable with the retrieved source data.",
+        "citationData": {
+          "title": "Sample Academic Paper",
+          "author": "Dr. Example Author",
+          "year": 2023,
+          "url": "https://doi.org/10.1234/example",
+          "excerpt": "This is a mock excerpt from the paper demonstrating the citation content.",
+          "citationId": "cmllwrak8000058kbmovpwub6"
+        },
+        "claim": "Primary brain and other central nervous system tumors represent a significant burden on public health, with an average annual age-adjusted incidence rate of 24.71 per 100,000 population in the United States.",
+        "citation": "Quinn T Ostrom, Mackenzie Price, Corey Neff, Gino Cioffi, Kristin A Waite, Carol Kruchko, Jill S Barnholtz-Sloan, CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States in 2015–2019, Neuro-Oncology, Volume 24, Issue Supplement_5, October 2022, Pages v1–v95, https://doi-org.dartmouth.idm.oclc.org/10.1093/neuonc/noac202"
+      },
+      "duration_ms": 26717,
+      "timestamp": "2026-02-14T06:00:36.571Z"
+    },
+    {
+      "citation": "Miller KD, Ostrom QT, Kruchko C, Patil N, Tihan T, Cioffi G, et al. Brain and other central nervous system tumor statistics, 2021. CA Cancer J Clin. 2021 Sept;71(5):381–406.",
+      "claim": "Despite accounting for a small proportion of all malignancies, brain tumors contribute disproportionately to cancer-related morbidity and mortality due to their high fatality rates and the neurological sequelae associated with both the disease and its treatment.",
       "response": {
         "verdict": "cannot_verify",
         "confidence": "low",
@@ -14,66 +36,22 @@
           "title": "Sample Academic Paper",
           "author": "Dr. Example Author",
           "year": 2023,
-          "url": "https://en.wikipedia.org/wiki/Earth",
+          "url": "https://doi.org/10.1234/example",
           "excerpt": "This is a mock excerpt from the paper demonstrating the citation content.",
-          "fullText": "This is the complete mock text of the academic paper. It contains detailed information about various scientific concepts. The paper discusses multiple theories and provides evidence for different claims. This full text would normally be retrieved from a database or external source."
+          "citationId": "cmllwrsic000158kbfr5swfx4"
         },
-        "claim": "The Earth is the third planet from the Sun",
-        "citation": "https://en.wikipedia.org/wiki/Earth"
+        "claim": "Despite accounting for a small proportion of all malignancies, brain tumors contribute disproportionately to cancer-related morbidity and mortality due to their high fatality rates and the neurological sequelae associated with both the disease and its treatment.",
+        "citation": "Miller KD, Ostrom QT, Kruchko C, Patil N, Tihan T, Cioffi G, et al. Brain and other central nervous system tumor statistics, 2021. CA Cancer J Clin. 2021 Sept;71(5):381–406."
       },
-      "duration_ms": 14343,
-      "timestamp": "2026-02-12T01:22:36.223Z"
-    },
-    {
-      "citation": "https://www.python.org/doc/",
-      "claim": "Python is a high-level programming language",
-      "response": {
-        "verdict": "cannot_verify",
-        "confidence": "low",
-        "evidence": [],
-        "notes": "The ClaimVerifierAgent returned 'cannot_verify' with low confidence and no evidence. The SourceRetrieverAgent returned a mock/stubbed document (title 'Sample Academic Paper') rather than the actual Python documentation content at the provided URL, so the verifier could not confirm the claim from the retrieved text. To fully verify the claim, retrieve the real Python documentation page content (https://www.python.org/doc/) and re-run verification.",
-        "citationData": {
-          "title": "Sample Academic Paper",
-          "author": "Dr. Example Author",
-          "year": 2023,
-          "url": "https://www.python.org/doc/",
-          "excerpt": "This is a mock excerpt from the paper demonstrating the citation content.",
-          "fullText": "This is the complete mock text of the academic paper. It contains detailed information about various scientific concepts. The paper discusses multiple theories and provides evidence for different claims. This full text would normally be retrieved from a database or external source."
-        },
-        "claim": "Python is a high-level programming language",
-        "citation": "https://www.python.org/doc/"
-      },
-      "duration_ms": 17423,
-      "timestamp": "2026-02-12T01:22:50.566Z"
-    },
-    {
-      "citation": "Smith, J. (2023). Climate Change Research. Nature, 123(4), 567-589.",
-      "claim": "A study found a 56% higher prevalence of stroke",
-      "response": {
-        "verdict": "cannot_verify",
-        "confidence": "low",
-        "evidence": [],
-        "notes": "The SourceRetrieverAgent returned a mock/stubbed paper ('Sample Academic Paper') with placeholder text. The ClaimVerifierAgent is a stub and returned that real verification is not implemented. I cannot confirm from the provided source that a study found a 56% higher prevalence of stroke.",
-        "citationData": {
-          "title": "Sample Academic Paper",
-          "author": "Dr. Example Author",
-          "year": 2023,
-          "url": "https://example.com/sample-paper",
-          "excerpt": "This is a mock excerpt from the paper demonstrating the citation content.",
-          "fullText": "This is the complete mock text of the academic paper. It contains detailed information about various scientific concepts. The paper discusses multiple theories and provides evidence for different claims. This full text would normally be retrieved from a database or external source."
-        },
-        "claim": "A study found a 56% higher prevalence of stroke",
-        "citation": "Smith, J. (2023). Climate Change Research. Nature, 123(4), 567-589."
-      },
-      "duration_ms": 14856,
-      "timestamp": "2026-02-12T01:23:07.990Z"
+      "duration_ms": 23811,
+      "timestamp": "2026-02-14T06:01:03.289Z"
     }
   ],
   "summary": {
-    "success": 3,
+    "success": 2,
     "failed": 0,
     "verdicts": {
-      "cannot_verify": 3
+      "cannot_verify": 2
     }
   }
 }

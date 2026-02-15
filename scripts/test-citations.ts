@@ -1,10 +1,12 @@
 #!/usr/bin/env tsx
 
-// Load environment variables from .env.local
+// Load environment variables from .env and .env.local
 import { config } from 'dotenv';
 import { resolve } from 'path';
 
-// Load .env.local from project root
+// Load .env first (database credentials)
+config({ path: resolve(process.cwd(), '.env') });
+// Then load .env.local (overrides for local dev)
 config({ path: resolve(process.cwd(), '.env.local') });
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -21,7 +23,7 @@ interface CitationData {
   year?: number;
   url?: string;
   excerpt: string;
-  fullText: string;
+  citationId: string;
 }
 
 interface VerifyResponse {

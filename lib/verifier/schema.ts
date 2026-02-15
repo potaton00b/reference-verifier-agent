@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-// Schema for verification result (final output)
-export const VerificationResultSchema = z.object({
+// Schema for claim verification result (output from ClaimVerifier agent)
+export const ClaimVerificationResultSchema = z.object({
   verdict: z.enum(['supports', 'contradicts', 'cannot_verify']),
   confidence: z.enum(['high', 'medium', 'low']),
   evidence: z.array(z.string()),
@@ -15,11 +15,11 @@ export const CitationDataSchema = z.object({
   year: z.number().optional(),
   url: z.string().optional(),
   excerpt: z.string(),
-  fullText: z.string(),  // Add: The complete text content of the source
+  citationId: z.string(),  // Reference ID to retrieve full text from database
 });
 
-// Combined schema for complete verification response (verification + citation data)
-export const VerificationResponseSchema = z.object({
+// Combined schema for orchestrator response (verification + citation data from Orchestrator agent)
+export const OrchestratorResponseSchema = z.object({
   verdict: z.enum(['supports', 'contradicts', 'cannot_verify']),
   confidence: z.enum(['high', 'medium', 'low']),
   evidence: z.array(z.string()),
@@ -28,6 +28,6 @@ export const VerificationResponseSchema = z.object({
 });
 
 // Export TypeScript types
-export type VerificationResult = z.infer<typeof VerificationResultSchema>;
+export type ClaimVerificationResult = z.infer<typeof ClaimVerificationResultSchema>;
 export type CitationData = z.infer<typeof CitationDataSchema>;
-export type VerificationResponse = z.infer<typeof VerificationResponseSchema>;
+export type OrchestratorResponse = z.infer<typeof OrchestratorResponseSchema>;

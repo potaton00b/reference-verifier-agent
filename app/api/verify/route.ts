@@ -51,8 +51,16 @@ export async function POST(request: NextRequest) {
 
   const { claim, citation } = validation.data;
 
+  console.log('📥 [API] Received verification request');
+  console.log('   Claim:', claim.substring(0, 80) + '...');
+  console.log('   Citation:', citation.substring(0, 80) + '...');
+
   // Call orchestrator to verify claim
   const result = await verify(claim, citation);
+
+  console.log('📤 [API] Sending response');
+  console.log('   Verdict:', result.verdict);
+  console.log('   CitationId:', result.citationData?.citationId || 'N/A');
 
   return NextResponse.json({
     ...result,  // verdict, confidence, evidence, notes

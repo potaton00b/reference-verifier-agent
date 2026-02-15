@@ -1,20 +1,45 @@
 import { Agent } from '@openai/agents';
 import { CitationDataSchema } from './schema';
+import { parseCitation, fetchAndSaveCitation } from './tools';
 
 export const sourceRetrieverSubAgent = new Agent({
   name: 'SourceRetrieverAgent',
-  instructions: `You return mock citation data. For ANY citation input, always return:
-    - title: "Sample Academic Paper"
-    - author: "Dr. Example Author"
-    - year: 2023
-    - excerpt: "This is a mock excerpt from the paper demonstrating the citation content."
-    - fullText: "This is the complete mock text of the academic paper. It contains detailed information about various scientific concepts. The paper discusses multiple theories and provides evidence for different claims. This full text would normally be retrieved from a database or external source."
+  instructions: `You retrieve citation data from a source and automatically save it to the database.
 
-    Return this exact mock data regardless of the input citation.`,
-  outputType: CitationDataSchema,  // Structured output
-  model: 'gpt-5-mini',  // Compact, cost-efficient model for subagents
+  Steps:
+  1. Call 'parse_citation' tool with the raw citation string
+     - This parses the citation (APA, Vancouver, etc.) into structured JSON
+     - Returns: { title, author, year, doi?, pmid?, journal? }
+
+  2. Call 'fetch_and_save_citation' tool with the parsed data
+     - Pass the structured fields (title, author, year, journal) - some of these are optional
+     - This tool fetches full text AND saves to database atomically
+     - Returns: { citationId, title, author, year, excerpt, url }
+
+  3. Return the data from step 2 as your final output
+
+  IMPORTANT:
+  - You MUST call parse_citation first, then fetch_and_save_citation.
+    DO NOT parse the citation yourself.
+    DO NOT skip these tools.
+    ALWAYS call both tools in sequence, no exceptions.
+    The tools may return placeholder data - that's okay, use it anyway.`,
+  tools: [parseCitation, fetchAndSaveCitation],
+  outputType: CitationDataSchema,
+  model: 'gpt-5-mini',
   modelSettings: {
-    reasoning: { effort: 'minimal' },  // Faster responses for simple tasks
+    reasoning: { effort: 'minimal' },
     text: { verbosity: 'low' },
   },
+});
+
+// Add event listeners for debugging tool calls
+sourceRetrieverSubAgent.on('agent_tool_start', (ctx, tool, details) => {
+  console.log(`🟢 [SourceRetrieverAgent] tool_start: ${tool.name}`);
+  console.log('   Arguments:', JSON.stringify(details.toolCall.arguments, null, 2));
+});
+
+sourceRetrieverSubAgent.on('agent_tool_end', (ctx, tool, result) => {
+  console.log(`✅ [SourceRetrieverAgent] tool_end: ${tool.name}`);
+  console.log('   Result:', result.substring(0, 200) + (result.length > 200 ? '...' : ''));
 });

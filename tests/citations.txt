@@ -5,13 +5,10 @@
 #
 # Example pairs below:
 
-Claim: The Earth is the third planet from the Sun
-Citation: https://en.wikipedia.org/wiki/Earth
+Claim: Primary brain and other central nervous system tumors represent a significant burden on public health, with an average annual age-adjusted incidence rate of 24.71 per 100,000 population in the United States.
+Citation: Quinn T Ostrom, Mackenzie Price, Corey Neff, Gino Cioffi, Kristin A Waite, Carol Kruchko, Jill S Barnholtz-Sloan, CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States in 2015–2019, Neuro-Oncology, Volume 24, Issue Supplement_5, October 2022, Pages v1–v95, https://doi-org.dartmouth.idm.oclc.org/10.1093/neuonc/noac202
 
-Claim: Python is a high-level programming language
-Citation: https://www.python.org/doc/
-
-Claim: A study found a 56% higher prevalence of stroke
-Citation: Smith, J. (2023). Climate Change Research. Nature, 123(4), 567-589.
+Claim: Despite accounting for a small proportion of all malignancies, brain tumors contribute disproportionately to cancer-related morbidity and mortality due to their high fatality rates and the neurological sequelae associated with both the disease and its treatment.
+Citation: Miller KD, Ostrom QT, Kruchko C, Patil N, Tihan T, Cioffi G, et al. Brain and other central nervous system tumor statistics, 2021. CA Cancer J Clin. 2021 Sept;71(5):381–406.
 
 # Add your claim-citation pairs below:
