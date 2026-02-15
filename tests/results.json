@@ -1,57 +1,25 @@
 {
-  "timestamp": "2026-02-14T06:01:27.101Z",
+  "timestamp": "2026-02-15T19:35:51.352Z",
   "total": 2,
   "results": [
     {
       "citation": "Quinn T Ostrom, Mackenzie Price, Corey Neff, Gino Cioffi, Kristin A Waite, Carol Kruchko, Jill S Barnholtz-Sloan, CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States in 2015–2019, Neuro-Oncology, Volume 24, Issue Supplement_5, October 2022, Pages v1–v95, https://doi-org.dartmouth.idm.oclc.org/10.1093/neuonc/noac202",
       "claim": "Primary brain and other central nervous system tumors represent a significant burden on public health, with an average annual age-adjusted incidence rate of 24.71 per 100,000 population in the United States.",
-      "response": {
-        "verdict": "cannot_verify",
-        "confidence": "low",
-        "evidence": [],
-        "notes": "Automated verification unavailable with the retrieved source data.",
-        "citationData": {
-          "title": "Sample Academic Paper",
-          "author": "Dr. Example Author",
-          "year": 2023,
-          "url": "https://doi.org/10.1234/example",
-          "excerpt": "This is a mock excerpt from the paper demonstrating the citation content.",
-          "citationId": "cmllwrak8000058kbmovpwub6"
-        },
-        "claim": "Primary brain and other central nervous system tumors represent a significant burden on public health, with an average annual age-adjusted incidence rate of 24.71 per 100,000 population in the United States.",
-        "citation": "Quinn T Ostrom, Mackenzie Price, Corey Neff, Gino Cioffi, Kristin A Waite, Carol Kruchko, Jill S Barnholtz-Sloan, CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States in 2015–2019, Neuro-Oncology, Volume 24, Issue Supplement_5, October 2022, Pages v1–v95, https://doi-org.dartmouth.idm.oclc.org/10.1093/neuonc/noac202"
-      },
-      "duration_ms": 26717,
-      "timestamp": "2026-02-14T06:00:36.571Z"
+      "error": "API error (500): {\"error\":\"Server configuration error\"}",
+      "duration_ms": 47,
+      "timestamp": "2026-02-15T19:35:51.297Z"
     },
     {
       "citation": "Miller KD, Ostrom QT, Kruchko C, Patil N, Tihan T, Cioffi G, et al. Brain and other central nervous system tumor statistics, 2021. CA Cancer J Clin. 2021 Sept;71(5):381–406.",
       "claim": "Despite accounting for a small proportion of all malignancies, brain tumors contribute disproportionately to cancer-related morbidity and mortality due to their high fatality rates and the neurological sequelae associated with both the disease and its treatment.",
-      "response": {
-        "verdict": "cannot_verify",
-        "confidence": "low",
-        "evidence": [],
-        "notes": "This is a stub agent. Real claim verification is not implemented yet.",
-        "citationData": {
-          "title": "Sample Academic Paper",
-          "author": "Dr. Example Author",
-          "year": 2023,
-          "url": "https://doi.org/10.1234/example",
-          "excerpt": "This is a mock excerpt from the paper demonstrating the citation content.",
-          "citationId": "cmllwrsic000158kbfr5swfx4"
-        },
-        "claim": "Despite accounting for a small proportion of all malignancies, brain tumors contribute disproportionately to cancer-related morbidity and mortality due to their high fatality rates and the neurological sequelae associated with both the disease and its treatment.",
-        "citation": "Miller KD, Ostrom QT, Kruchko C, Patil N, Tihan T, Cioffi G, et al. Brain and other central nervous system tumor statistics, 2021. CA Cancer J Clin. 2021 Sept;71(5):381–406."
-      },
-      "duration_ms": 23811,
-      "timestamp": "2026-02-14T06:01:03.289Z"
+      "error": "API error (500): {\"error\":\"Server configuration error\"}",
+      "duration_ms": 8,
+      "timestamp": "2026-02-15T19:35:51.344Z"
     }
   ],
   "summary": {
-    "success": 2,
-    "failed": 0,
-    "verdicts": {
-      "cannot_verify": 2
-    }
+    "success": 0,
+    "failed": 2,
+    "verdicts": {}
   }
 }
