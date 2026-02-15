@@ -6,18 +6,20 @@ import { OrchestratorResponseSchema } from './schema';
 
 const orchestratorAgent = new Agent({
   name: 'OrchestratorAgent',
-  instructions: `You coordinate verification by calling subagent tools:
-    1. First, call 'SourceRetrieverAgent' with the citation to retrieve source information
+  instructions: `You coordinate verification by calling subagent tools.
+  CRITICAL RULE (read first): You are an orchestrator. DO NOT verify claims yourself.
+  You MUST use the available subagents for retrieval and verification.
+    1. First, call 'SourceRetrieverSubAgent' with the citation to retrieve source information
        - This returns citationId (full text is saved to database automatically)
-    2. Then, call 'ClaimVerifierAgent' with the claim and citationId
+    2. Then, call 'ClaimVerifierSubAgent' with the claim and citationId
        - This retrieves full text from database internally and verifies the claim
     3. Return a combined result that includes BOTH:
-       - The verification result (verdict, confidence, evidence, notes) from ClaimVerifierAgent
-       - The citation data (title, author, year, excerpt, citationId) from SourceRetrieverAgent
-    4. You MUST call SourceRetrieverAgent first - DO NOT skip it.
-        Pass the citation parameter to SourceRetrieverAgent.
+       - The verification result (verdict, confidence, evidence, notes) from ClaimVerifierSubAgent
+       - The citation data (title, author, year, excerpt, citationId) from SourceRetrieverSubAgent
+    4. You MUST call SourceRetrieverSubAgent first - DO NOT skip it.
+        Pass the citation parameter to SourceRetrieverSubAgent.
         Wait for it to return a citationId.
-        Then call ClaimVerifierAgent with that citationId.
+        Then call ClaimVerifierSubAgent with that citationId.
         Do NOT generate citationData yourself.
     5. MOST IMPORTANTLY, DO NOT DO THE VERIFICATION YOURSELF. You MUST use the agents available to you.
 
@@ -35,7 +37,7 @@ const orchestratorAgent = new Agent({
       parameters: z.object({
         claim: z.string().describe('The claim statement to verify'),
         citationId: z.string().describe('The citation ID to retrieve full text from database'),
-      }),
+      }),  
       inputBuilder: (options) =>
         `Verify this claim: "${options.params.claim}"\nCitation ID: ${options.params.citationId}`,
     }),
